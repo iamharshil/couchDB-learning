@@ -1,6 +1,6 @@
 import NodeCouchDb from "node-couchdb";
 
-export const couch = new NodeCouchDb({
+export const couchDB = new NodeCouchDb({
 	host: "127.0.0.1",
 	port: "5984",
 	protocol: "http",

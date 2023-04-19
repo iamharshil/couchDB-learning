@@ -1,9 +1,9 @@
-import { couch } from "@/helper/Database";
+import { couchDB } from "@/helper/Database";
 
-export default async function (req, res) {
+export default async function handler(req, res) {
 	if (req.method === "GET") {
 		try {
-			const updated = await couch.update("learning", {
+			const updated = await couchDB.update("learning", {
 				_id: "ea5558271a4e6f1b0966a0f1dc000840",
 				_rev: "1-6871fba207a527c27f31402385d86658",
 				name: "John wick",

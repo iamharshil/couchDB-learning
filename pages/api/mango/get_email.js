@@ -1,6 +1,6 @@
-import { couch } from "@/helper/Database";
+import { couchDB } from "@/helper/Database";
 
-export default async function (req, res) {
+export default async function handler(req, res) {
 	if (req.method === "GET") {
 		try {
 			const query = {
@@ -11,7 +11,7 @@ export default async function (req, res) {
 				fields: ["_id", "name", "age", "email"],
 			};
 
-			const getEmail = await couch.mango("learning", query);
+			const getEmail = await couchDB.mango("learning", query);
 			if (getEmail) {
 				return res
 					.status(202)

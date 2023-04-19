@@ -1,9 +1,9 @@
-import { couch } from "@/helper/Database";
+import { couchDB } from "@/helper/Database";
 
-export default async function (req, res) {
+export default async function handler(req, res) {
 	if (req.method === "GET") {
 		try {
-			const createNew = await couch.insert("learning", {
+			const createNew = await couchDB.insert("learning", {
 				name: "John Doe",
 				age: 30,
 				email: "johndoe@example.com",

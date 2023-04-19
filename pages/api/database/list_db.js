@@ -1,9 +1,9 @@
-import { couch } from "@/helper/Database";
+import { couchDB } from "@/helper/Database";
 
 export default async function handler(req, res) {
 	if (req.method === "GET") {
 		try {
-			const listData = await couch.listDatabases();
+			const listData = await couchDB.listDatabases();
 			if (listData) {
 				console.log(listData);
 				return res

@@ -1,9 +1,9 @@
-import { couch } from "@/helper/Database";
+import { couchDB } from "@/helper/Database";
 
-export default async function (req, res) {
+export default async function handler(req, res) {
 	if (req.method === "GET") {
 		try {
-			const deleted = await couch.del(
+			const deleted = await couchDB.del(
 				"learning",
 				"ea5558271a4e6f1b0966a0f1dc000840",
 				"2-cbd550c913e39302fb6f2dddeee126bf",

@@ -1,9 +1,9 @@
-import { couch } from "@/helper/Database";
+import { couchDB } from "@/helper/Database";
 
 export default async function handler(req, res) {
 	if (req.method === "GET") {
 		try {
-			couch
+			couchDB
 				.createDatabase("another")
 				.then((doc) => {
 					return res
@@ -19,6 +19,26 @@ export default async function handler(req, res) {
 			return res
 				.status(500)
 				.json({ status: 500, message: "Internal server error.", error });
+		}
+	} else if (req.method === "POST") {
+		try {
+			const created = await couchDB.createDatabase(req.body.name);
+			if (created) {
+				return res.status(201).json({ status: 201, message: "Success" });
+			} else {
+				return res.status(400).json({
+					status: 400,
+					message: "Something went wrong.",
+					error: created,
+				});
+			}
+		} catch (error) {
+			console.log(error);
+			return res.status(500).json({
+				status: 500,
+				message: "Internal server error.",
+				error: error.message,
+			});
 		}
 	} else {
 		return res

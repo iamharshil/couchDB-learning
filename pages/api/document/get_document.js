@@ -1,9 +1,9 @@
-import { couch } from "@/helper/Database";
+import { couchDB } from "@/helper/Database";
 
 export default async function handler(req, res) {
 	if (req.method === "GET") {
 		try {
-			couch
+			couchDB
 				.get("learning", "_design/learning/_view/new-view")
 				.then((doc) => {
 					return res
