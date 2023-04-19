@@ -9,3 +9,5 @@ export const couchDB = new NodeCouchDb({
 		pass: "adminpw",
 	},
 });
+
+// export const couch = couchDB.use("posts");
