@@ -1,0 +1,764 @@
+{
+	"info": {
+		"_postman_id": "6ea2c3e7-bf77-4b59-b8d3-e7f9fbc3b4f4",
+		"name": "CouchDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Learning",
+			"item": [
+				{
+					"name": "List Database",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/learning/list_database",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"list_database"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Database",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"posts\"\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/learning/create_database",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"create_database"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drop Database",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"posts-info\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/learning/drop_database",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"drop_database"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Post third title\",\n    \"content\": \"Post third content\",\n    \"status\": \"draft\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/learning/create_document",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"create_document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Design",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/learning/create_design_all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"create_design_all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/learning/get_document",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"get_document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"a2c7cd4c0318c30b8962566c99033849\",\n    \"_rev\": \"2-84777e490ec51ce433be556123ffd8a4\",\n    \"title\": \"Post fifth title\",\n    \"content\": \"Post fourth content\",\n    \"status\": \"draft\"\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/learning/update_document",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"update_document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"a2c7cd4c0318c30b8962566c990313e2\",\n    \"_rev\": \"1-1fd37c542c04bdd58e478d540bd64248\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/learning/delete_document",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"delete_document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Post third\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/learning/find_document",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"learning",
+								"find_document"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nano",
+			"item": [
+				{
+					"name": "Get Info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test-db\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/nano/get_info",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"get_info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Connection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/check_conn",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"check_conn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create DB",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test-db\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/nano/create_db",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"create_db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List as Stream",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/list_as_stream",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"list_as_stream"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replication",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/replication",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"replication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DB dot Use",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/use",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"use"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Doc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/delete_doc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"delete_doc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Doc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/get_doc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"get_doc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/fetch",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"fetch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partition Function",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/partition_function",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"partition_function"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Doc Partitioned",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/partitioned/create_doc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"partitioned",
+								"create_doc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attachment Destroy nano",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/attachment_destroy",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"attachment_destroy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Index Nano",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/partitioned/create_index",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"partitioned",
+								"create_index"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/test",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Database",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/database/list_db",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"database",
+						"list_db"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Database",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/database/create_database",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"database",
+						"create_database"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check CouchDB",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5984",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5984"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/document/get_document",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"document",
+						"get_document"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/document/create_document",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"document",
+						"create_document"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/document/update_document",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"document",
+						"update_document"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Document",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/document/delete_document",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"document",
+						"delete_document"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/mango/get_email",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"mango",
+						"get_email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/posts/create_posts",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"posts",
+						"create_posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Selector",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/mango/selector",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"mango",
+						"selector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fields",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/mango/fields",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"mango",
+						"fields"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Attachment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/attachment/insert_attachment",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"attachment",
+						"insert_attachment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unique Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/unique_id",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"unique_id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Attachment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/attachment/delete_attachment",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"attachment",
+						"delete_attachment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

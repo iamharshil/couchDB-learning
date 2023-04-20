@@ -8,7 +8,6 @@ export default async function handler(req, res) {
 					age: { $gt: 30 },
 					email: { $regex: "johndoe@example.com" },
 				},
-				fields: ["_id", "name", "age", "email"],
 			};
 
 			const getEmail = await couchDB.mango("learning", query);

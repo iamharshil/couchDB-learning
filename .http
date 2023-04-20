@@ -1,0 +1,7 @@
+@URL = http://localhost:3000
+
+###
+
+GET {{URL}}/api/nano/get_head
+###
+GET {{URL}}/api/nano/get_all
