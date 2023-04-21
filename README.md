@@ -12,6 +12,7 @@ emit(doc.age, 1);
 - more queries -> https://dev.to/yenyih/query-in-apache-couchdb-mango-query-lfd
 - https://readthedocs.org/ - multiple queries
 - https://github.com/1999/node-couchdb/blob/master/src/node-couchdb.js (node-couchdb code)
+- https://futurestud.io/tutorials/node-js-check-if-a-file-exists (node fs)
 
 <!-- methods -->
 
@@ -36,3 +37,9 @@ emit(doc.age, 1);
 // delete attachment (remove not working)
 .delAttachment("db name","_id","attachment name","_rev")
 ```
+
+- image
+- (view || design for get) - view for update
+- multer image on no profile changes
+- how to get rev on update(frontend)
+- update doc removes other fields too (save older data with updated data)

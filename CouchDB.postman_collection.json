@@ -474,6 +474,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Head",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/get_head",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"get_head"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/nano/get_all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"nano",
+								"get_all"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -743,9 +781,22 @@
 		},
 		{
 			"name": "Delete Attachment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
 				"url": {
 					"raw": "{{URL}}/api/attachment/delete_attachment",
 					"host": [
@@ -755,6 +806,60 @@
 						"api",
 						"attachment",
 						"delete_attachment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Attachment Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "database_name",
+							"value": "another",
+							"type": "default"
+						},
+						{
+							"key": "_id",
+							"value": "ea5558271a4e6f1b0966a0f1dc011ee4",
+							"type": "default"
+						},
+						{
+							"key": "attachment_image",
+							"type": "file",
+							"src": "/Users/rain/Downloads/a.png"
+						},
+						{
+							"key": "title",
+							"value": "image-attachment",
+							"type": "default"
+						},
+						{
+							"key": "_rev",
+							"value": "13-57cb3bb0b49867725cf2f05050429e38",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/attachment/insert_attachment",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"attachment",
+						"insert_attachment"
 					]
 				}
 			},
