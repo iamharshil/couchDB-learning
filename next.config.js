@@ -5,6 +5,7 @@ const nextConfig = {
 		COUCH_DB_USERNAME: process.env.COUCH_DB_USERNAME,
 		COUCH_DB_PASSWORD: process.env.COUCH_DB_PASSWORD,
 		COUCHDB_NAME: process.env.COUCHDB_NAME,
+		COUCHDB_URI: process.env.COUCHDB_URI,
 	},
 };
 

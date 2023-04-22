@@ -1,21 +1,10 @@
 import { couchDB } from "@/helper/Database";
-import { validateName } from "@/helper/common";
 
 export default async function handler(req, res) {
 	if (req.method === "POST") {
 		try {
-			await couchDB
-				.get("learning", parsed._id)
-				.then(({ data }) => {
-					return res
-						.status(202)
-						.json({ status: 202, ok: true, message: "success", data });
-				})
-				.catch((error) => {
-					return res
-						.status(400)
-						.json({ status: 400, ok: false, message: error.message });
-				});
+			// asd
+			const test = "";
 		} catch (error) {
 			console.log(error);
 			return res

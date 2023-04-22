@@ -1,12 +1,27 @@
 import { couchDB } from "@/helper/Database";
-import { validateName } from "@/helper/common";
 
 export default async function handler(req, res) {
-	if (req.method === "POST") {
+	if (req.method === "GET") {
 		try {
 			await couchDB
-				.get("learning", parsed._id)
-				.then(({ data }) => {
+				.mango("learning", {
+					selector: {
+						title: {
+							$regex: "",
+						},
+					},
+					sort: [
+						{
+							createdAt: "asc",
+						},
+					],
+					skip: 0,
+					limit: 1,
+					// bookmark:
+					// 	"g2wAAAACaAJkAA5zdGFydGtleV9kb2NpZG0AAAAgOGJlNmEwYWJhMDRiMWUyNWQ5YTdlZGNlOWMwMDEyNjJoAmQACHN0YXJ0a2V5bAAAAAFtAAAAGDIwMjMtMDQtMjJUMDM6NTQ6MjcuOTcxWmpq",
+				})
+				.then((data) => {
+					// console.log("data is", data);
 					return res
 						.status(202)
 						.json({ status: 202, ok: true, message: "success", data });

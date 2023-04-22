@@ -115,10 +115,27 @@ handler.use(uploadFile).post(async (req, res) => {
 						createdAt: new Date(),
 						updatedAt: new Date(),
 					})
-					.then((doc) => {
-						return res
-							.status(202)
-							.json({ status: 202, ok: true, message: "success", data: doc });
+					.then(async ({ data }) => {
+						await couchDB
+							.insert("learning", {
+								doc_type: "follow",
+								userId: data.id,
+								follower: [],
+								following: [],
+							})
+							.then((followData) => {
+								return res.status(201).json({
+									status: 201,
+									ok: true,
+									message: "success",
+									data: data,
+								});
+							})
+							.catch((error) => {
+								return res
+									.status(400)
+									.json({ status: 400, ok: false, message: error.message });
+							});
 					})
 					.catch((error) => {
 						console.log(error);
@@ -140,6 +157,7 @@ handler.use(uploadFile).post(async (req, res) => {
 				});
 			}
 		} else {
+			fs.unlinkSync(req.file.path);
 			return res.status(400).json({
 				status: 400,
 				ok: false,
@@ -148,6 +166,7 @@ handler.use(uploadFile).post(async (req, res) => {
 			});
 		}
 	} catch (error) {
+		fs.unlinkSync(req.file.path);
 		console.log(error);
 		return res.status(500).json({
 			status: 500,

@@ -30,3 +30,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# images
+/public/assets/user/profie/
