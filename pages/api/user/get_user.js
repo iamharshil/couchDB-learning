@@ -1,11 +1,10 @@
 import { couchDB } from "@/helper/Database";
-import { validateName } from "@/helper/common";
 
 export default async function handler(req, res) {
 	if (req.method === "POST") {
 		try {
 			await couchDB
-				.get("learning", parsed._id)
+				.get(process.env.COUCH_DB_NAME, parsed._id)
 				.then(({ data }) => {
 					return res
 						.status(202)

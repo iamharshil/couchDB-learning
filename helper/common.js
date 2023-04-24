@@ -33,6 +33,10 @@ export function validatePassword(password) {
 }
 // in case of any particular use-case
 
+export function validatePrice(price) {
+	return price.match(/^(\d+(?:[\.\,]\d{2})?)$/);
+}
+
 export function hasEightDigit(text) {
 	return text.length >= 8;
 }
@@ -95,4 +99,81 @@ export function checkPassword(text) {
 }
 export function validateName(value) {
 	return value.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/);
+}
+
+export function userValidation(user) {
+	const temp = {};
+	if (!user.hasOwnProperties("firstName")) {
+		temp.firstName = "Fist name is required.";
+	}
+	if (!user.hasOwnProperties("lastName")) {
+		temp.lastName = "Last name is required.";
+	}
+	if (!user.hasOwnProperties("email")) {
+		temp.email = "Email is required.";
+	}
+	if (!user.hasOwnProperties("username")) {
+		temp.username = "Username is required.";
+	}
+	if (!user.hasOwnProperties("password")) {
+		temp.password = "Password is required.";
+	}
+	if (!user.hasOwnProperties("profile")) {
+		temp.profile = "Profile is required.";
+	}
+
+	if (Object.keys(temp).length === 0) {
+		return { validate: true };
+	} else {
+		return { validate: false, message: temp };
+	}
+}
+
+export function userSchemaValidate(userData) {
+	const temp = { extraFields: [], count: 0 };
+	const user = {
+		doc_type: "",
+		firstName: "",
+		lastName: "",
+		username: "",
+		email: "",
+		password: "",
+		profile: "",
+		account_type: "",
+		createdAt: "",
+		updatedAt: "",
+	};
+	Object.keys(userData).map((each) => {
+		if (!user.hasOwnProperty(each)) {
+			temp.extraFields = [...temp.extraFields, each];
+			temp.count = temp.count + 1;
+		}
+	});
+
+	return temp;
+}
+
+export function productSchemaValidate(productData) {
+	const temp = { extraFields: [], count: 0 };
+	const product = {
+		doc_type: "",
+		name: "",
+		category: "",
+		price: "",
+		description: "",
+		images: [],
+		available_products: "",
+		status: "",
+		createdAt: "",
+		updatedAt: "",
+		userId: "",
+	};
+	Object.keys(productData).map((each) => {
+		if (!product.hasOwnProperty(each)) {
+			temp.extraFields = [...temp.extraFields, each];
+			temp.count = temp.count + 1;
+		}
+	});
+
+	return temp;
 }

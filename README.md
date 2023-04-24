@@ -15,6 +15,8 @@ emit(doc.age, 1);
 - https://futurestud.io/tutorials/node-js-check-if-a-file-exists (node fs)
 - !IMPORTANT https://docs.couchdb.org/en/stable/api/database/index.html
 - https://dba.stackexchange.com/questions/240447/complex-queries-in-couchdb-across-multiple-documents
+- multer multiple files -> https://stackoverflow.com/questions/36096805/uploading-multiple-files-with-multer-but-from-different-fields
+- https://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis/
 
 <!-- methods -->
 
@@ -95,3 +97,11 @@ const options = {
 mystore_user
 mystore_product
 mystore_order
+
+- government owns properties user will buy from it. if user want to construct or convert onto another type(personal, residential, commercial) it then it require gov title change. each properties has subTypes like for garden for work for institute etc based on type.
+- if users are multiple it required each user's permission to sell properties
+
+- propertiesInformation -> amount (current amount), amount for sale(amount on which owner wants to sell), squareFoot (size of different property) isSale (if for sale), isForTitle(if in process of title change).
+- ownerInfo -> zone or gov 0, normal would be 1
+- propertyLadger -> (for track or record of property)
+- zoningInfo -> zoningRegulations(lot size, height and floor area ratio)

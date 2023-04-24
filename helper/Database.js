@@ -5,8 +5,8 @@ export const couchDB = new NodeCouchDb({
 	port: "5984",
 	protocol: "http",
 	auth: {
-		user: "admin",
-		pass: "adminpw",
+		user: process.env.COUCH_DB_USERNAME,
+		pass: process.env.COUCH_DB_PASSWORD,
 	},
 });
 

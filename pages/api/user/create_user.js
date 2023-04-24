@@ -1,5 +1,5 @@
 import { couchDB } from "@/helper/Database";
-import { checkPassword } from "@/helper/common";
+import { checkPassword, userSchemaValidate } from "@/helper/common";
 import { validateEmail, validateName, validateUsername } from "@/helper/common";
 import crypto from "crypto";
 import multer from "multer";
@@ -74,10 +74,13 @@ handler.use(uploadFile).post(async (req, res) => {
 		} else if (parsed.password !== parsed.confirmPassword) {
 			errorMessages.password = "Passwords does not match.";
 		}
+		if (!parsed.account_type || parsed.account_type.length === 0) {
+			errorMessages.account_type = "Account type is required.";
+		}
 
 		if (Object.keys(errorMessages).length === 0) {
 			const checkAvailable = {};
-			const checkEmail = await couchDB.mango("learning", {
+			const checkEmail = await couchDB.mango(process.env.COUCH_DB_NAME, {
 				selector: {
 					doc_type: "user",
 					email: parsed.email,
@@ -86,7 +89,7 @@ handler.use(uploadFile).post(async (req, res) => {
 			if (checkEmail.data.docs.length > 0) {
 				checkAvailable.email = "Email already exists.";
 			}
-			const checkUsername = await couchDB.mango("learning", {
+			const checkUsername = await couchDB.mango(process.env.COUCH_DB_NAME, {
 				selector: {
 					doc_type: "user",
 					username: parsed.username,
@@ -103,50 +106,53 @@ handler.use(uploadFile).post(async (req, res) => {
 					.toString("hex");
 				const hashedPassword = `${salt} ${hash}`;
 
-				await couchDB
-					.insert("learning", {
-						doc_type: "user",
-						firstName: parsed.firstName,
-						lastName: parsed.lastName,
-						username: parsed.username,
-						email: parsed.email,
-						password: hashedPassword,
-						profile: req.file.filename,
-						createdAt: new Date(),
-						updatedAt: new Date(),
-					})
-					.then(async ({ data }) => {
-						await couchDB
-							.insert("learning", {
-								doc_type: "follow",
-								userId: data.id,
-								follower: [],
-								following: [],
-							})
-							.then((followData) => {
-								return res.status(201).json({
-									status: 201,
-									ok: true,
-									message: "success",
-									data: data,
-								});
-							})
-							.catch((error) => {
-								return res
-									.status(400)
-									.json({ status: 400, ok: false, message: error.message });
+				const data = {
+					doc_type: "user",
+					firstName: parsed.firstName,
+					lastName: parsed.lastName,
+					username: parsed.username,
+					email: parsed.email,
+					password: hashedPassword,
+					profile: req.file.filename,
+					account_type: parsed.account_type,
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				};
+
+				const checkSchema = userSchemaValidate(data);
+				if (checkSchema.count === 0) {
+					await couchDB
+						.insert(process.env.COUCH_DB_NAME, data)
+						.then(async ({ data }) => {
+							return res.status(201).json({
+								status: 201,
+								ok: true,
+								message: "success",
+								data: data,
 							});
-					})
-					.catch((error) => {
-						console.log(error);
-						fs.unlinkSync(req.file.path);
-						return res.status(400).json({
-							status: 400,
-							ok: false,
-							message: "Something went wrong.",
-							error,
+						})
+						.catch((error) => {
+							console.log(error);
+							fs.unlinkSync(req.file.path);
+							return res.status(400).json({
+								status: 400,
+								ok: false,
+								message: "Something went wrong.",
+								error,
+							});
 						});
+				} else {
+					fs.unlinkSync(req.file.path);
+					return res.status(400).json({
+						status: 400,
+						ok: false,
+						message: "Something went wrong.",
+						error: {
+							message: "Extra field found while creating user.",
+							extraFields: [...checkSchema.extraFields],
+						},
 					});
+				}
 			} else {
 				fs.unlinkSync(req.file.path);
 				return res.status(400).json({

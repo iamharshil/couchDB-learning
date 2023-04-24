@@ -67,11 +67,14 @@ handler.use(uploadFile).post(async (req, res) => {
 		}
 
 		if (Object.keys(checkValidation).length === 0) {
-			let olderData = await couchDB.get("learning", req.body._id);
+			let olderData = await couchDB.get(
+				process.env.COUCH_DB_NAME,
+				req.body._id,
+			);
 			olderData = olderData.data;
 			if (typeof req.file === "undefined") {
 				await couchDB
-					.update("learning", {
+					.update(process.env.COUCH_DB_NAME, {
 						...olderData,
 						_rev: req.body._rev,
 						firstName: req.body.firstName,
@@ -94,7 +97,7 @@ handler.use(uploadFile).post(async (req, res) => {
 					});
 			} else {
 				await couchDB
-					.update("learning", {
+					.update(process.env.COUCH_DB_NAME, {
 						...olderData,
 						_rev: req.body._rev,
 						firstName: req.body.firstName,

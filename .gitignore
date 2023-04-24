@@ -32,4 +32,5 @@ yarn-error.log*
 .vercel
 
 # images
-/public/assets/user/profie/
+public/assets/user/profile/*
+public/assets/product/images/*
