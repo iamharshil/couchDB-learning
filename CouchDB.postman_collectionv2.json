@@ -1,0 +1,609 @@
+{
+	"info": {
+		"_postman_id": "f549317d-dfdc-4c56-89b8-4d3572230f40",
+		"name": "CouchDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CouchDB API",
+			"item": [
+				{
+					"name": "Find ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"selector\": {\n        \"title\": {\n            \"$regex\": \"\"\n        }\n    },\n    \"fields\": [\n        \"_id\",\n        \"title\",\n        \"content\",\n        \"description\",\n        \"status\",\n        \"createdAt\"\n    ],\n    \"sort\": [\n        {\n            \"createdAt\": \"asc\"\n        }\n    ],\n    \"limit\": 2,\n    \"skip\": 0,\n    \"execution_stats\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5984/learning/_find",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5984",
+							"path": [
+								"learning",
+								"_find"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "Fifth",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "User",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "fifthuser",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "fifthuser@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Pa$$w0rd!",
+							"type": "text"
+						},
+						{
+							"key": "confirmPassword",
+							"value": "Pa$$w0rd!",
+							"type": "text"
+						},
+						{
+							"key": "profile",
+							"type": "file",
+							"src": "/Users/rain/Downloads/a.png"
+						},
+						{
+							"key": "account_type",
+							"value": "buyer",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/user/create_user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"create_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": \"afe640a7386e522c5abde0e62a0079df\",\n    \"_rev\": \"1-5326e5f707cfb2a070406ae745f93221\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/user/remove_user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"remove_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": \"fe3c97618ac1064d1225e0e62900e142\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/user/get_user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"get_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "Second",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "User",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "seconduser",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "seconduser@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "profile",
+							"type": "file",
+							"src": "/Users/rain/Downloads/a.png"
+						},
+						{
+							"key": "_id",
+							"value": "fe3c97618ac1064d1225e0e62900dea0",
+							"type": "default"
+						},
+						{
+							"key": "_rev",
+							"value": "1-e279fc2ba20c3f5da0e3f12d8ef3432a",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/user/update_user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"update_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/post/create_index",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"post",
+						"create_index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/test",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"fe3c97618ac1064d1225e0e62900e142\",\n    \"title\": \"Post ten\",\n    \"description\": \"This is post ten...\",\n    \"content\": \"This is content of post ten...\",\n    \"status\": \"published\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/post/create_post",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"post",
+						"create_post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create View",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/post/create_view",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"post",
+						"create_view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/post/get_posts",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"post",
+						"get_posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single User Posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"fe3c97618ac1064d1225e0e62900e142\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/post/get_user_posts",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"post",
+						"get_user_posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"postId\": \"348afae675eb875efa6b16eeb902529e\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/post/get_single_post",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"post",
+						"get_single_post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Posts with users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/post/get_posts_with_user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"post",
+						"get_posts_with_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Follow Info",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"348afae675eb875efa6b16eeb902c95a\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/follow/follow_info",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"follow",
+						"follow_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Handle Follow",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"loggedUser\": \"348afae675eb875efa6b16eeb902c95a\",\n    \"toUser\": \"348afae675eb875efa6b16eeb903b410\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/follow/handle_follow",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"follow",
+						"handle_follow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Fourth laptop",
+							"type": "default"
+						},
+						{
+							"key": "category",
+							"value": "laptop",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "99999",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "This is laptop from brand xyz, ....",
+							"type": "default"
+						},
+						{
+							"key": "product_image",
+							"type": "file",
+							"src": "/Users/rain/Downloads/a.png"
+						},
+						{
+							"key": "product_image",
+							"type": "file",
+							"src": "/Users/rain/Downloads/download (1).jpeg"
+						},
+						{
+							"key": "userId",
+							"value": "c247b603931cca8a3f5150e5b500f1ef",
+							"type": "default"
+						},
+						{
+							"key": "available_products",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/product/create_product",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"product",
+						"create_product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User with Products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"d88411d6b6e5c604ad537c25cf00754b\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/mango_apis/get_user_with_products",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"mango_apis",
+						"get_user_with_products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products list with users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/mango_apis/get_products_with_users",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"mango_apis",
+						"get_products_with_users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Active Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/product/active",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"product",
+						"active"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
