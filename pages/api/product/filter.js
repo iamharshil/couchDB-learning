@@ -10,7 +10,12 @@ export default async function handler(req, res) {
 				return await couchDB.mango(process.env.COUCH_DB_NAME, {
 					selector: {
 						doc_type: "product",
-						status: query?.status,
+						// status: query.status,
+						// category: query.category,
+						price: {
+							$gte: Number(query.priceFrom),
+							$lte: Number(query.priceTo),
+						},
 					},
 					limit: 250,
 					bookmark,
