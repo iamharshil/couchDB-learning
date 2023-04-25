@@ -94,14 +94,44 @@ const options = {
   }
 ```
 
+```js
+// mango through bookmark
+
+let allData = [];
+async function getData(bookmark) {
+  return await couchDB.mango(process.env.COUCH_DB_NAME, {
+    selector: {
+      doc_type: "product",
+      status: "active",
+    },
+    limit: 1,
+    bookmark,
+  });
+}
+async function recurFunc(prevBookmark) {
+  const temp = await getData(prevBookmark);
+  if (temp.status === 200) {
+    if (temp.data.docs.length > 0) {
+      allData = [...allData, ...temp.data.docs];
+      recurFunc(temp.data.bookmark);
+    } else {
+      return res.status(202).json({
+        status: 202,
+        ok: true,
+        message: "success",
+        data: allData,
+      });
+    }
+  } else {
+    console.log(temp);
+    return res
+      .status(400)
+      .json({ status: 400, ok: false, message: temp.message });
+  }
+}
+await recurFunc("");
+```
+
 mystore_user
 mystore_product
 mystore_order
-
-- government owns properties user will buy from it. if user want to construct or convert onto another type(personal, residential, commercial) it then it require gov title change. each properties has subTypes like for garden for work for institute etc based on type.
-- if users are multiple it required each user's permission to sell properties
-
-- propertiesInformation -> amount (current amount), amount for sale(amount on which owner wants to sell), squareFoot (size of different property) isSale (if for sale), isForTitle(if in process of title change).
-- ownerInfo -> zone or gov 0, normal would be 1
-- propertyLadger -> (for track or record of property)
-- zoningInfo -> zoningRegulations(lot size, height and floor area ratio)
